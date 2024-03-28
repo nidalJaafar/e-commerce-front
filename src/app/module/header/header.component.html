@@ -1,14 +1,46 @@
-<div class="grid">
+<div class="hamburger-menu" [class.active]="active">
+  <img class="menu icon" src="assets/menu-cross.png" alt="menu" (click)="toggleMenu()">
+  <div class="logo">
+    <img class="image-logo" src="assets/logo.jpg" alt="logo"/>
+  </div>
+  <div class="user">
+    <div class="element">
+      <img class="icon" src="assets/home.png" alt="home"/>
+      <p>Home</p>
+    </div>
+    <div class="element">
+      <img class="icon" src="assets/user.png" alt="user"/>
+      <p>My Account</p>
+    </div>
+    <div class="element">
+      <img class="icon" src="assets/shopping-cart.png" alt="cart"/>
+      <p>Cart</p>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" [class.active]="active" (click)="toggleMenu()"></div>
+
+<div class="grid" [class.hidden]="searchActive">
   <div class="search">
-    <img class="icon" src="assets/search.png" alt="search"/>
+    <img class="icon desktop" src="assets/search.png" alt="search"/>
+    <img class="icon mobile" src="assets/search.png" alt="search" (click)="toggleSearchActive()"/>
     <input type="text" placeholder="Search Products"/>
   </div>
   <div class="logo">
     <img class="image-logo" src="assets/logo.jpg" alt="logo"/>
   </div>
   <div class="user">
-    <img class="menu icon" src="assets/menu.png" alt="menu">
+    <img class="menu icon" src="assets/menu.png" alt="menu" (click)="toggleMenu()">
     <img class="icon" src="assets/user.png" alt="user"/>
-    <img class="icon" src="assets/shopping-cart.png" alt="card"/>
+    <img class="icon" src="assets/shopping-cart.png" alt="cart"/>
+  </div>
+</div>
+
+<div class="grid mobile" [class.hidden]="!searchActive">
+  <div class="search">
+    <img class="icon" src="assets/back.png" alt="back" (click)="toggleSearchActive()" [class.search-active]="searchActive" [class.hidden]="!searchActive"/>
+    <input type="text" [class.search-active]="searchActive" placeholder="Search Products"/>
+    <img class="icon" src="assets/search.png" alt="search" (click)="toggleSearchActive()"/>
   </div>
 </div>
